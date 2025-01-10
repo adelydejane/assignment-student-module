@@ -29,4 +29,12 @@ export class StudentsService {
 
         return student;
     }
+
+    // FUNCTION (UPDATE STUDENT)
+    async updateStudent(id: number, data: Partial<Student>): Promise<Student> {
+        const student = await this.getStudentById(id);
+        Object.assign(student, data);
+        return this.studentRepository.save(student);
+    }
+
 }
